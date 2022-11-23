@@ -42,6 +42,10 @@
  * 1. public boolean add(Object o) :- Insert the new object immediately before the element which would be returned by he next() method.
  * 2. public Object remove()
  * 3. public void set(Object o) :- replaces last element retrieved by next() or previous() method.
+ * 
+ * 
+ * Que: Why is 'ListIterator iterator()' not given to 'Set'?
+ * Ans: coz set doesn't have any order
  */
 
 public class IteratorAndListIterator {
