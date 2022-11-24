@@ -1,11 +1,14 @@
 # Concepts
 
+Integer ArrayList to int[]:-
+
 ```java
 int[] arr = list.stream().mapToInt(i -> i).toArray();
 ```
 
-```java
+Without if else return:-
 
+```java
 if(condition) return true;
 else return false;
 
@@ -15,6 +18,8 @@ return condition;
 return !condition;
 
 ```
+
+Stream of String, to perform various operations on each String
 
 ```java
 // Get the stream
@@ -33,11 +38,15 @@ return !condition;
             .count();
 ```
 
+List to index HashMap:-
+
 ```java
 IntStream.range(0, alphabet.size())
          .boxed()
          .collect(toMap(alphabet::get, Function.identity()));
 ```
+
+Array to index HashMap:-
 
 ```java
 Map<Integer, Integer> map = IntStream.range(0, nums2.length)
@@ -52,16 +61,14 @@ IntStream.range(0, entries.length/2).map(i -> i*2)
                  Map::putAll);
 ```
 
-
-
-
+String to frequency HashMap:-
 
 ```java
 String s = "Hello"
 
 Map<Character, Integer> = s.chars()
-															.mapToObj(c->(char)c)
-															.collect(Collectors.toMap());
+               .mapToObj(c->(char)c)
+               .collect(Collectors.toMap());
 
 Map<Character, Long> characterFrequency = string.chars()  // creates an IntStream
     .mapToObj(c -> (char) c) // converts the IntStream to Stream<Character>
@@ -93,25 +100,31 @@ Map<Character, Integer> frequency =
                .collect(Collectors.toMap(Function.identity(), c -> 1, Math::addExact));
 ```
 
+String to List of characters
+
 ```java
-List<Character> = s.chars()
-											.mapToObj(c-> (char)c)
-											.collect(Collectors.toList()); // converts to List
+List<Character> = s.chars() // gives IntStream which we have to convert to 'char' below
+           .mapToObj(c -> (char)c)
+           .collect(Collectors.toList()); // converts to List
 ```
 
 Using sort we get runtime of O(S+T) and space of O(1) ⇒ most interviewers consider sorting doesn’t take extra space
 
+Sorting characters in String:-
+
 ```java
 String sorted = inputstr
-      .chars()
-      .sorted()
-      .collect(
-        StringBuilder::new,
-        StringBuilder::appendCodePoint,
-        StringBuilder::append
-      )
-      .toString();
+                    .chars()
+                    .sorted()
+                    .collect(
+                      StringBuilder::new,
+                      StringBuilder::appendCodePoint,
+                      StringBuilder::append
+                    )
+                    .toString();
 ```
+
+Sorting character array in reverse order:-
 
 ```java
 Character tempArray[] = new Character[str.length()];
@@ -119,6 +132,9 @@ Character tempArray[] = new Character[str.length()];
 Arrays.sort(tempArray, Collections.reverseOrder()); // `Arrays.sort(tempArray)` for regular sort
     StringBuilder sb = new StringBuilder(tempArray.length);
 ```
+
+
+Using Comparator(anon class) to reverse the sorting order:-
 
 ```java
 Character array[] = new Character[str.length()]; // can't use Comparator with primitive types
