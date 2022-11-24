@@ -1,11 +1,10 @@
-/*
+
    Object that go into priority queue have to implement comparable.
    Priority Queue is Abstract Data Structure i.e. can be implemented by various Data-Structures, but because of time complexity PrioriyQueues are generally implemented using Heaps. (Max heaps or Min heaps)
-   
+
    Library provided by programming languages generally provide Min-heap.
    To get Max-heap we can negate the compartor().
    If the items are number we can multiply them by '-1' when inserting and removing them from Min-heap, thus achiving a psudomaxheap.
-
 
    Types to Heaps:
         Binary Heap
@@ -41,6 +40,4 @@ Time: O(log(n))
     We can improve complexity of 'remove(element)' using HashTables --> get the complexity O(log n)
     * map every node to the index it is found at. when we want to remove a particular element just look up its index in HashTable using constant time.
 Caveat: What if there are 2 or more nodes with the same value?
-instead of mapping one value to one position, we will map one value to multiple positions. We can maintain a 'Set' or 'TreeSet' of indexes for which a perticular node value (key) maps to. 
-
- */
+instead of mapping one value to one position, we will map one value to multiple positions. We can maintain a 'Set' or 'TreeSet' of indexes for which a perticular node value (key) maps to.

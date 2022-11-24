@@ -6,6 +6,8 @@ Integer ArrayList to int[]:-
 int[] arr = list.stream().mapToInt(i -> i).toArray();
 ```
 
+---
+
 Without if else return:-
 
 ```java
@@ -18,6 +20,8 @@ return condition;
 return !condition;
 
 ```
+
+---
 
 Stream of String, to perform various operations on each String
 
@@ -38,6 +42,8 @@ Stream of String, to perform various operations on each String
             .count();
 ```
 
+---
+
 List to index HashMap:-
 
 ```java
@@ -45,6 +51,8 @@ IntStream.range(0, alphabet.size())
          .boxed()
          .collect(toMap(alphabet::get, Function.identity()));
 ```
+
+---
 
 Array to index HashMap:-
 
@@ -60,6 +68,8 @@ IntStream.range(0, entries.length/2).map(i -> i*2)
                  (m,i)->m.put(keyType.cast(entries[i]), valueType.cast(entries[i+1])),
                  Map::putAll);
 ```
+
+---
 
 String to frequency HashMap:-
 
@@ -100,6 +110,8 @@ Map<Character, Integer> frequency =
                .collect(Collectors.toMap(Function.identity(), c -> 1, Math::addExact));
 ```
 
+---
+
 String to List of characters
 
 ```java
@@ -124,6 +136,8 @@ String sorted = inputstr
                     .toString();
 ```
 
+---
+
 Sorting character array in reverse order:-
 
 ```java
@@ -133,6 +147,7 @@ Arrays.sort(tempArray, Collections.reverseOrder()); // `Arrays.sort(tempArray)` 
     StringBuilder sb = new StringBuilder(tempArray.length);
 ```
 
+---
 
 Using Comparator(anon class) to reverse the sorting order:-
 
