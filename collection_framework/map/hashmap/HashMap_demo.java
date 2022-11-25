@@ -33,6 +33,14 @@ class HashMapStringDemo {
 
             System.out.println("key: " + keyString + ", value: " + valString);
         }
+
+        System.out.println("-------------putAll()--------------------");
+
+        HashMap<String, String> putAllDemoMap = new HashMap<>();
+        putAllDemoMap.put("s1", "S1 value");
+        putAllDemoMap.put("s2", "s2 value");
+        putAllDemoMap.putAll(hashMap);
+        System.out.println(putAllDemoMap);
     }
 }
 
@@ -48,6 +56,7 @@ class HashMapCustomKeyDemo { // adding objects of our own class as key
         customkeyHashMap.put(new Emp1(40), "dddd");
         customkeyHashMap.put(new Emp1(20), "eeee"); // same key diff value, if we uncomment this equals method will not run as there is no non-unique key. If we don't override equals method instead of overriding HashMap will create a new entry
 
+    
         Set set = customkeyHashMap.entrySet();
         Iterator iterator = set.iterator();
 
@@ -59,6 +68,11 @@ class HashMapCustomKeyDemo { // adding objects of our own class as key
         }
 
         Emp1 emp = new Emp1(40);
+        
+        System.out.println("-----------check key and value----------");
+        System.out.println("Is key available? " + customkeyHashMap.containsKey(emp));
+        System.out.println("Is value available? " + customkeyHashMap.containsValue("dddd"));
+
         String ss = customkeyHashMap.get(emp);
         System.out.println(ss);
 
@@ -91,6 +105,7 @@ class Emp1 {
 
     @Override
     public boolean equals(Object o) {
+        // if(o instanceof Emp1) --> can use this check too
         System.out.println("Emp1 equals() method");
         return this.id == ((Emp1)o).id;
     }
