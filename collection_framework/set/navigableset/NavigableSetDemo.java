@@ -1,4 +1,4 @@
-package collection_framework.navigableset;
+package collection_framework.set.navigableset;
 
 import java.util.Arrays;
 import java.util.NavigableSet;
