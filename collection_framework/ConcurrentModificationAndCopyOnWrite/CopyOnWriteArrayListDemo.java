@@ -1,43 +1,44 @@
-package ConcurrentModificationAndCopyOnWrite;
+package collection_framework.ConcurrentModificationAndCopyOnWrite;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ConcurrentModificationException_Demo {
+public class CopyOnWriteArrayListDemo {
 
     public static void main(String[] args) {
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("a");
-        arrayList.addAll(Arrays.asList("b", "c"));
+        CopyOnWriteArrayList<String> copyWriteArrayList = new CopyOnWriteArrayList<>();
+        copyWriteArrayList.add("a");
+        copyWriteArrayList.addAll(Arrays.asList("b", "c"));
 
         try {
-            ArrayListThread1 alt1 = new ArrayListThread1(arrayList);
+            ArrayListThread1 alt1 = new ArrayListThread1(copyWriteArrayList);
             Thread tt1 = new Thread(alt1);
 
-            ArrayListThread2 alt2 = new ArrayListThread2(arrayList);
+            ArrayListThread2 alt2 = new ArrayListThread2(copyWriteArrayList);
             Thread tt2 = new Thread(alt2);
             
             tt1.setPriority(10);
-            tt2.setPriority(1);
 
             tt1.start();
             tt2.start();
 
+            tt1.join();
+            tt2.join();
         } catch(Exception exception) {
             System.out.println("Exception: " + exception);
         }
 
-        System.out.println(arrayList);
+        System.out.println(copyWriteArrayList);
     }
     
 }
 
 class ArrayListThread1 implements Runnable {
 
-    ArrayList<String> cowal;
+    CopyOnWriteArrayList<String> cowal;
 
-    ArrayListThread1(ArrayList<String> cowal) {
+    ArrayListThread1(CopyOnWriteArrayList<String> cowal) {
         this.cowal = cowal;
     }
 
@@ -48,7 +49,7 @@ class ArrayListThread1 implements Runnable {
             try {
                 String str = iterator.next();
                 System.out.println("Name: " + str);
-                Thread.sleep(10000);
+                Thread.sleep(1000);
             } catch(Exception exception) {
                 System.out.println("Exception in reading: " + exception);
             }
@@ -58,9 +59,9 @@ class ArrayListThread1 implements Runnable {
 
 class ArrayListThread2 implements Runnable {
 
-    ArrayList<String> cowal;
+    CopyOnWriteArrayList<String> cowal;
 
-    ArrayListThread2(ArrayList<String> cowal) {
+    ArrayListThread2(CopyOnWriteArrayList<String> cowal) {
         this.cowal = cowal;
     }
 

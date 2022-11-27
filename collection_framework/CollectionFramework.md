@@ -1,4 +1,6 @@
-/*
+# Collection Framework
+
+```java
  * Collection is a group of of object, to be treated as a single unit.
  * 
  * Importance of Collections
@@ -123,4 +125,6 @@
  * 8. public boolean removeAll(Collection c) --> removes all elements in common with  collection 'c' passed in argument
  * 9. public int size() --> gives total number of elements
  * 10. public Object[] toArray() --> return elements of collection in object type array
- */         
+ */
+
+```

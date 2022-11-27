@@ -1,10 +1,10 @@
-package list.linkedlist;
+package collection_framework.list.linkedlist;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class LinkedList_Demo {
+public class LinkedListDemo {
     
     public static void main(String[] args) {
 

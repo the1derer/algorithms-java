@@ -28,6 +28,7 @@ class TreeMap {
 ```
 
 ## NOTE:
+
 * 'NavigableMap' extends 'SortedMap' interface.
 * Class whose Object has to kept in 'Key' has to implement `Comparable` interface. Otherwise `ClassCastException`
 

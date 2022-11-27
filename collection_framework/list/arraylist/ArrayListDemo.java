@@ -1,4 +1,4 @@
-package list.arraylist;
+package collection_framework.list.arraylist;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Vector;
 import java.util.stream.Stream;
 
-public class ArrayList_Demo {
+public class ArrayListDemo {
 
     public static void main(String[] args) {
 

@@ -21,39 +21,52 @@ public class TreeMapComparableDemo {
         
         show(treeMap);
 
-        Temp e1 = new Temp(10);
+        Temp e1 = new Temp(1);
+        Temp e4 = new Temp(4);
+        Temp e10 = new Temp(10);
 
-        //------------------------headMap()---------------------------
+        System.out.println("------------------------headMap()---------------------------");
         // SortedMap headSortedMap = treeMap.headMap(e1);
-        SortedMap headSortedMap = treeMap.headMap(e1, true); // second argument is to toggle upper limit inclusive or not
-        System.out.println("less than 10");
-        show(headSortedMap);
+        SortedMap<Temp, String> headSortedMap4 = treeMap.headMap(e4, true); // second argument is to toggle upper limit inclusive or not
+        System.out.println("less than 4(inclusive)");
+        show(headSortedMap4);
 
         
-        e1 = new Temp(1);
+        System.out.println("------------------------tailMap()---------------------------");
+        SortedMap<Temp, String> tailSortedMap4 = treeMap.tailMap(e4); // lower bound, default inclusive
+        System.out.println("greater than 4");
+        show(tailSortedMap4);
 
-        //------------------------tailMap()---------------------------
-        SortedMap tailSortedMap = treeMap.tailMap(e1);
+        SortedMap<Temp, String> tailSortedMap1 = treeMap.tailMap(e1); // lower bound
         System.out.println("greater than 1");
-        show(tailSortedMap);
+        show(tailSortedMap1);
 
-        Temp e2 = new Temp(10);
+        System.out.println("------------------------subMap()---------------------------");
+        // SortedMap subMap = treeMap.subMap(e1, e2); // ranges not inclusive
+        SortedMap<Temp, String> subMap410 = treeMap.subMap(e4, true, e10, true);
+        System.out.println("b/w 4 and 10 inclusive");
+        show(subMap410);
 
-        //------------------------subMap()-----------------------------
-        // SortedMap subMap = treeMap.subMap(e1, e2);
-        SortedMap subMap = treeMap.subMap(e1, true, e2, true);
-        System.out.println("b/w 1 and 10");
-        show(subMap);
+        SortedMap<Temp, String> subMap14 = treeMap.subMap(e1, e4);
+        System.out.println("b/w 1 and 4 exclusive");
+        show(subMap14);
 
-        //--------------------
+        System.out.println("------------------------isEmpty() & get()---------------------------");
         System.out.println("isEmpty(): " + treeMap.isEmpty());
         
-        System.out.println("get(): " + treeMap.get(e2));
+        System.out.println("get(): " + treeMap.get(e4));
+        System.out.println("get(): " + treeMap.get(e1));
 
-        System.out.println("remove:");
-        treeMap.remove(e2);
+        System.out.println("------------------------remove()---------------------------");
+        treeMap.remove(e1);
+        System.out.println("after removing 1 :");
         show(treeMap);
         System.out.println("size after removal: " + treeMap.size());
+
+
+        System.out.println("---------------descendingMap()-----------------");
+        Map<Temp, String> descendingMap = treeMap.descendingMap();
+        show(descendingMap);
     }
 
     static void show(Map<Temp, String> map) {

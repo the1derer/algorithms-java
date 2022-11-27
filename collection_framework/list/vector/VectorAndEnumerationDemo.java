@@ -1,4 +1,4 @@
-package list.vector;
+package collection_framework.list.vector;
 
 import java.util.Arrays;
 import java.util.Enumeration;

@@ -1,4 +1,4 @@
-package list;
+package collection_framework.list;
 /*
  * Only those objects whose class has implemented 'Comparable' can be sorted. Sorting without implmenting 'Comparable' will result in 'ClassCastException'
  * 
