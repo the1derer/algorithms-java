@@ -1,4 +1,4 @@
-package collection_framework.ConcurrentModificationAndCopyOnWrite;
+package collection_framework.concurrentmodification_copyonwrite;
 
 import java.util.ArrayList;
 import java.util.Arrays;
