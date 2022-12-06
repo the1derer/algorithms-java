@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ArrayListDemo {
@@ -24,7 +25,8 @@ public class ArrayListDemo {
         list1.add("a");
         list1.add("b");
 
-        // list.add(Integer.valueOf(10)); // works in case of non-generics ArrayList, also note here we are able to add 'Integer' to an String ArrayList, which shouldn't have happened
+        // list.add(Integer.valueOf(10)); // works in case of non-generics ArrayList, also note here
+        // we are able to add 'Integer' to an String ArrayList, which shouldn't have happened
 
         System.out.println(list1.size());
         System.out.println(list1);
@@ -55,7 +57,7 @@ public class ArrayListDemo {
         ArrayList<Integer> list2 = new ArrayList<Integer>(); // clear arraylist
         int[] x = {1, -1, 2, -2, 3, -3, 4, -4, -1};
 
-        for(int i : x) {
+        for (int i : x) {
             list2.add(i);
         }
 
@@ -63,9 +65,9 @@ public class ArrayListDemo {
 
         Iterator<Integer> iterator = list2.iterator();
 
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Integer z = (Integer) iterator.next();
-            if(z.intValue() < 0)
+            if (z.intValue() < 0)
                 iterator.remove(); // will remove all negative values
         }
         System.out.println(list2);
@@ -74,22 +76,23 @@ public class ArrayListDemo {
         System.out.println("-------------converting ArrayList to array-----------------");
 
         Object o[] = list2.toArray();
-        
-        for(int i = 0; i < o.length; i++) {
+
+        for (int i = 0; i < o.length; i++) {
             Integer z = (Integer) o[i];
             System.out.print(z.intValue() + " ");
         }
 
         System.out.println();
 
-        for(Integer i : list2) {
+        for (Integer i : list2) {
             System.out.println(i.intValue()); // converts Wrapper to primary Data Type
             System.out.println(i);
         }
 
 
-        System.out.println("------------- adding ArrayList's own reference to ArrayList---------------");
-        
+        System.out.println(
+                "------------- adding ArrayList's own reference to ArrayList---------------");
+
         ArrayList<ArrayList> multiDimList = new ArrayList<>();
 
         System.out.println(multiDimList.size());
@@ -101,10 +104,12 @@ public class ArrayListDemo {
 
         System.out.println(multiDimList.size());
 
-        System.out.println(multiDimList); // OP: [(this Collection), (this Collection), (this Collection), (this Collection)]
+        System.out.println(multiDimList); // OP: [(this Collection), (this Collection), (this
+                                          // Collection), (this Collection)]
 
-        
-        System.out.println("------------- adding ArrayList's own reference to ArrayList-----------------");
+
+        System.out.println(
+                "------------- adding ArrayList's own reference to ArrayList-----------------");
 
         ArrayList<ArrayList> multiDimList2 = new ArrayList<ArrayList>();
         ArrayList<String> arrayListString = new ArrayList<String>();
@@ -121,10 +126,10 @@ public class ArrayListDemo {
 
         System.out.println(multiDimList2); // OP: [[a, b, c]]
 
-        
+
         System.out.println("----------add method-------------");
         ArrayList<String> addDemoList = new ArrayList<>();
-        
+
         addDemoList.add("Hi");
         addDemoList.add("Hello");
         addDemoList.add("String");
@@ -137,7 +142,7 @@ public class ArrayListDemo {
         System.out.println(addDemoList);
 
         addDemoList.add(0, "Bye");
-        
+
         System.out.println("Elements after adding bye:" + addDemoList);
 
         System.out.println("-------------------ArrayList to array----------------------");
@@ -151,17 +156,18 @@ public class ArrayListDemo {
         // ArrayList to array conversion
         String[] stringArray = new String[demoListToArray.size()];
 
-        for(int j = 0; j < demoListToArray.size(); j++) {
+        for (int j = 0; j < demoListToArray.size(); j++) {
             stringArray[j] = demoListToArray.get(j);
         }
 
-        for(String k : stringArray) {
+        for (String k : stringArray) {
             System.out.println(k);
         }
 
         // using Stream
-        stringArray = demoListToArray.stream()
-            .toArray(String[]::new); // shorthand of `.toArray(size -> new String[size])`
+        stringArray = demoListToArray.stream().toArray(String[]::new); // shorthand of
+                                                                       // `.toArray(size -> new
+                                                                       // String[size])`
 
         Arrays.stream(stringArray).forEach(System.out::println);
 
@@ -173,7 +179,7 @@ public class ArrayListDemo {
 
         List<String> I = Arrays.asList(cityNames); // to List
 
-        ArrayList<String> cityList = new ArrayList<>(Arrays.stream(cityNames).toList());
+        ArrayList<String> cityList = new ArrayList<>(Arrays.asList(cityNames));
 
 
         System.out.println("ArrayList Comparison");
@@ -191,7 +197,7 @@ public class ArrayListDemo {
         compareList1.add("Good Night");
 
         ArrayList<String> compareList2 = new ArrayList<>();
-        
+
         compareList2.add("Howdy");
         compareList2.add("Good Morning");
         compareList2.add("bye");
@@ -199,14 +205,14 @@ public class ArrayListDemo {
 
         // storing the comparison o/p in ArrayList<String>
         ArrayList<String> compStore = new ArrayList<>();
-        for(String temp : compareList1) {
+        for (String temp : compareList1) {
             compStore.add(compareList2.contains(temp) ? "Yes" : "No");
         }
         System.out.println(compStore);
 
         // storing the comparison o/p in ArrayList<Integer>
         ArrayList<Integer> compStoreInt = new ArrayList<>();
-        for(String temp : compareList1) {
+        for (String temp : compareList1) {
             compStoreInt.add(compareList2.contains(temp) ? 1 : 0);
         }
         System.out.println(compStoreInt);
@@ -214,14 +220,15 @@ public class ArrayListDemo {
 
         System.out.println("-------------Ensure Capacity------------------");
         /*
-         * ArrayList<String> al = new ArrayList<>(4);
-         * al.ensureCapacity(76);
+         * ArrayList<String> al = new ArrayList<>(4); al.ensureCapacity(76);
          */
 
 
         System.out.println("-----------------Synced ArrayList--------------");
-        List<String> syncedList = Collections.synchronizedList(new ArrayList<>()); // can give `new ArrayList<String>()` as argument
-        
+        List<String> syncedList = Collections.synchronizedList(new ArrayList<>()); // can give `new
+                                                                                   // ArrayList<String>()`
+                                                                                   // as argument
+
         syncedList.add("Pen");
         syncedList.add("Notebook");
         syncedList.add("Ink");
@@ -234,7 +241,7 @@ public class ArrayListDemo {
         }
 
         System.out.println("----------------Trim ArrayList------------------");
-        ArrayList<Integer> trimArrayList = new ArrayList<>(50); // ArrayList don't have capacity or 
+        ArrayList<Integer> trimArrayList = new ArrayList<>(50); // ArrayList don't have capacity or
         // Vector<Integer> trimArrayList = new Vector<>(50);
 
         // System.out.println(trimArrayList.capacity()); // works only with Vector
@@ -297,7 +304,8 @@ public class ArrayListDemo {
         System.out.println("Result after shuffle operation ArrayList: " + shuffleArrayListEx);
 
         Collections.shuffle(shuffleArrayListEx);
-        System.out.println("Result after second shuffle operation ArrayList: " + shuffleArrayListEx);
+        System.out
+                .println("Result after second shuffle operation ArrayList: " + shuffleArrayListEx);
 
 
 
@@ -312,8 +320,9 @@ public class ArrayListDemo {
         subRangeArrayListEx.add("click");
         System.out.println("Before Shuffle ArrayList: " + subRangeArrayListEx);
 
-        
-        System.out.println("sub-list: " + subRangeArrayListEx.subList(2, 4)); // toIndex is not inclusive
+
+        System.out.println("sub-list: " + subRangeArrayListEx.subList(2, 4)); // toIndex is not
+                                                                              // inclusive
 
         System.out.println("--------------Swap Elements-----------------");
 
@@ -333,13 +342,16 @@ public class ArrayListDemo {
 
         System.out.println("----------------containsAll()--------------------------------");
 
-        ArrayList<String> containsAllList1 = new ArrayList<>(Stream.of("First", "Second", "Third", "Random").toList());
+        ArrayList<String> containsAllList1 = new ArrayList<>(
+                Stream.of("First", "Second", "Third", "Random").collect(Collectors.toList()));
         ArrayList<String> containsAllList2 = new ArrayList<>(Arrays.asList("Second", "Random"));
 
-        System.out.println("Does arraylist contains all list elements? " + containsAllList1.containsAll(containsAllList2));
+        System.out.println("Does arraylist contains all list elements? "
+                + containsAllList1.containsAll(containsAllList2));
 
         containsAllList2.add("One");
 
-        System.out.println("Does arraylist contains all list elements? " + containsAllList1.containsAll(containsAllList2));
+        System.out.println("Does arraylist contains all list elements? "
+                + containsAllList1.containsAll(containsAllList2));
     }
 }

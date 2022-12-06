@@ -21,7 +21,8 @@ public class CollectionsClassDemo {
         System.out.println("Initial ArrayList: " + exampleList);
 
         System.out.println("----------------- Collections.sort() ------------------");
-        System.out.println(Collections.sort(exampleList));
+        Collections.sort(exampleList);
+        System.out.println(exampleList);
 
 
         System.out.println("----------------- Collections.binarySearch() ------------------");
