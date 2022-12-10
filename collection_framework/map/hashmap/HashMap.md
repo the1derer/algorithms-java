@@ -35,7 +35,7 @@ If the key match is found than the 'Node' class object is not added into the buc
 
 1. The default size of an array is 16(always power of 2) and the load-factor is 0.75. Load FActor means whenever the size of the HashMap reaches to 75% of its current size i.e. 12, it will double its size by recomputing the hashcodes of existing elements.
 
-2. Hence to avoid rehashing of the elements(as it degrades performance), it is the best practice to explicityly give the size of the HashMap while creating it. Never give the capacity too high and load-factor too low.
+2. Hence to avoid rehashing of the elements(as it degrades performance), it is the best practice to explicitly give the size of the HashMap while creating it. Never give the capacity too high and load-factor too low.
 
 3. Since Java is multi-threaded it is very possible that >1 thread might be using the same HashMap and then they moth realize they need to resize the HashMap at the same time which leads to race condition.
 
@@ -80,9 +80,7 @@ static class Node implements Map.Entry {
 
 Every time we insert into HashMap using put() method, a new 'Node' object is created(not true in some cases. If key already exists, then it just replace the value). Map internally uses 2 data structures to manage/store data.
 
---------------------------------------------------------------------------------
-
-# HashMap class
+---
 
 The HashMap class uses a HashTable to implement the Map interface. The HashMap is not threadsafe and permits one null key and null value. The Hashmap class is roughly equivalent to the HashTable except that it is unsynchronized and permits null. This class makes no guarantee as to the order of the map.
 
@@ -92,32 +90,33 @@ HashMap can be synchronized by using a method:
 Map m = Collecn.synchronizedMap(new HashMap())
 ```
 
-Constructors of HashMap:-
+### Constructors of HashMap:-
 
 There are 4 types of constructors in HashMap as shown below:-
+
 1. HashMap():
-2. HashMap(Map m): It initalized the HashMap by using the elements of 'm'
+2. HashMap(Map m): It initialized the HashMap by using the elements of 'm'
 3. HashMap(int capacity): It initializes the capacity of the HashMap to capacity. The default initial capacity of HashMap will be 16 and load-factor
 will be 0.75. Load factor represents at what level HashMap should be doubled.
 4. HashMap(int capacity, float loadFactor): Initialized both capacity and load factor by using its argument.
 
+---
 
----------------------------------------------------------------------------------
+## Will Fiset Lecture Notes
 
-# William  Fiset Lecture Notes
+Keys in the HashMap should be of Immutable, eg.--> String, int etc
 
-/*
-   Keys in the HashMap should be of Immutable, eg.--> String, int etc
+### Time Complexity HashMap
 
-   Time Compexity HashMap:
    Operation    Average   Worst
    Insertion    O(1)        O(n)
    Removal      O(1)        O(n)
    Search       O(1)        O(n)
- *The constant time behaviour attributed to hash tables is only true if you have a good 'uniform hash function'.
+
+* The constant time behaviour attributed to hash tables is only true if you have a good 'uniform hash function'.
 
 Hash Collision: When two keys have same hashCode()
-   Methods to handle hash-colliosion:
+   Methods to handle hash-collision:
 
    1. Separate chaining: Deals by maintaining a data structure(usually a linked list) to hod all the different values which hashed to a particular value. The data structure doesn't have to be linked-list, it can be one or a mixture of arrays, binary trees, self balancing trees and etc.
 
@@ -127,13 +126,14 @@ Hash Collision: When two keys have same hashCode()
 Question: How do I maintain O(1) insertion and lookup time complexity once my HT gets really full and I have long linked list chains?
 Ans: Once the HT contains a lot of elements you should create a new HT with a larger capacity and rehash all the item inside the old HT and disperse them throughout the new HT at diff. locations.
 
-Question: How do I 'remove' key-value pairs from my HT in separte chaining?
-Ans: apply the same procudutre as doing a lookup for a key, but this time instead of returning the value associated with the key remove the node in the linked list data structure.
+Question: How do I 'remove' key-value pairs from my HT in separate chaining?
+Ans: apply the same procedure as doing a lookup for a key, but this time instead of returning the value associated with the key remove the node in the linked list data structure.
 
 Que: Can I use another DS to mode the bucket behaviour required for separate chaining?
 Ans: Of course! You can use arrays, binary trees, self balancing trees etc. You can even go with a hybrid approach like Java's HashMap. However, note that some of these are much more memory intensive and complex to implement than a simple linked list which is why they may be less popular.
 
-*** Open addressing:
+### Open addressing
+
 Since we are not going to use separate DS like linked-list etc in separate-chaining, instead we store in the HashTable itself, we care a great deal about size of HashTable.
 Load factor = (items in table) / (size of table)
 
@@ -158,11 +158,11 @@ Where H(k) is the hash for the key k and P(k, x) is the probing fn.
 
 There is a danger of going into a circle even when using probing fn. This means our probing fn is not viable.
 Que: So that's concerning, how do we handle probing fn which produce cycles shorter than the table size?
-Ans: In general the consensus is that we don't handle this issue, instead we avoid it altogether by restricting our domain of probing fn to those which produce a cycle of exactly N. (Ther are a few exceptions with special properties that can produce shorter cycles.)
+Ans: In general the consensus is that we don't handle this issue, instead we avoid it altogether by restricting our domain of probing fn to those which produce a cycle of exactly N. (There are a few exceptions with special properties that can produce shorter cycles.)
 
 Linear Probing:
 Que: Which value(s) of the constant 'a' in P(x) = ax produce a full cycle modulo N ?
-Ans. When 'a' and 'n' are 'relatively prime' i.e. if their Greatest-Coomon-Denominator == 1.
+Ans. When 'a' and 'n' are 'relatively prime' i.e. if their Greatest-Common-Denominator == 1.
 Hence when GCD(a, N) = 1 the probing fn P(x) be able to generate complete cycle & we will always be able to find an empty bucket.
 
 Quadratic Probing: P(x) = ax^2 + bx + c, where a != 0;
@@ -172,8 +172,8 @@ No cycle probing fn(most popular):
 2) P(x) = (x^2 + x)/2  and keep the table size a power of 2
 3) P(x) = (-1^x) * x^2 and keep the table size a prime N where N is-congruent-to 3 mod 4 (eg. x =23, which is Prime and congruenct to 3 mod 4)
 
-Double Hasing: // TODO: Revise again from William Fiset's lecture: <https://www.udemy.com/course/introduction-to-data-structures/learn/lecture/7283740#questions>
-P(k,x) = x*H2(k), where H2(k) is a seconde hash fn.
+Double Hashing: // TODO: Revise again from William Fiset's lecture: <https://www.udemy.com/course/introduction-to-data-structures/learn/lecture/7283740#questions>
+P(k,x) = x*H2(k), where H2(k) is a second hash fn.
 NOTE: H2(k) must hash the same type os keys as H1(k)
     Note: Notice that doubling hashing reduce to linear probing(except tat the constant is unknown until runtime).
 Since this reduces to linear probing at runtime, we may end up with a linear probing fn

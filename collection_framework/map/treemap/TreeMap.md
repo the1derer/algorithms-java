@@ -1,10 +1,10 @@
 # TreeMap
 
 * Implements 'NavigableMap' interface.
-* Maintains a Red-Black Tree(a type of self-balancing BST).
+* Maintains a Red-Black Tree(a type of self-balancing Binary Search Tree).
+  * Binary Search Tree -> For every node left subtree contains key with less value than node and right subtree contains key more value than left subtree.
 * This implementation provides guaranteed log(n) time cost for the containsKey, get, put and remove operations.
 * Algorithms are adaptations of those in Cormen, Leiserson, and Rivest's `Introduction to Algorithms`.
-
 
 ## Internal implementation
 
@@ -27,14 +27,14 @@ class TreeMap {
 }
 ```
 
-## NOTE:
+## NOTE
 
 * 'NavigableMap' extends 'SortedMap' interface.
 * Class whose Object has to kept in 'Key' has to implement `Comparable` interface. Otherwise `ClassCastException`
 
 ---
 
-# Entry class of TreeMap
+## Entry class of TreeMap
 
 ```java
 class TreeMap implement NavigableMap {
@@ -48,9 +48,13 @@ class TreeMap implement NavigableMap {
         Entry<K, V> parent;
     }
 }
+```
 
+```java
 interface NavigableMap extends SortedMap {...}
+```
 
+```java
 interface SortedMap {
     SortedMap headMap(Object start);
     SortedMap subMap(Object start);

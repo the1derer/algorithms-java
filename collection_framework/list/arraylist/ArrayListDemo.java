@@ -52,7 +52,7 @@ public class ArrayListDemo {
 
 
 
-        System.out.println("------------------------jIterator------------------");
+        System.out.println("------------------------Iterator------------------");
 
         ArrayList<Integer> list2 = new ArrayList<Integer>(); // clear arraylist
         int[] x = {1, -1, 2, -2, 3, -3, 4, -4, -1};
