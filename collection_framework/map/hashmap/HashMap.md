@@ -39,11 +39,11 @@ If the key match is found than the 'Node' class object is not added into the buc
 
 3. Since Java is multi-threaded it is very possible that >1 thread might be using the same HashMap and then they moth realize they need to resize the HashMap at the same time which leads to race condition.
 
-**4. What is race condition w.r.t. HashMaps:-**
+**4. What is race condition WRT to HashMaps:-**
 (a) When >=2 threads see the need for resizing the same HashMap, they might end up adding the elements of old bucket to the new bucket simultaneously.
     And hence, might lead to infinite loop.
     In case of Collision, i.e. when there are different keys with same HashCode, internally we use singly linked to store the elements.
-    And we store every new element at the head of the linked list to avoid tail traversing and hence at time of resizing the entire sequece of object in linked list gets reversed, during which there are chances of infinite loop.
+    And we store every new element at the head of the linked list to avoid tail traversing and hence at time of resizing the entire sequence of object in linked list gets reversed, during which there are chances of infinite loop.
 For example:
     lets assume there are 3 keys with same hashcode and hence stored in linkedlist inside a bucket[format is in : Object_Value(current_address , next_address)]:
     initial structure: 1(100, 200) -> 2(200, 300) -> (300, null)

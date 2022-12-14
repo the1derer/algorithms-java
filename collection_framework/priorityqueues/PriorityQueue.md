@@ -11,7 +11,7 @@
 
 A heap is a tree based DS that satisfies **heap invariant**(also called heap property) i.e. If 'A' is a parent node of 'B' then 'A' is ordered with respect to 'B' for all nodes A, B in the heap.
 
-### Turning Min PQ to Max PQ
+### Converting Min PQ to Max PQ
 
 * Library provided by programming languages generally provide Min-heap.
   * To get Max-heap we can negate the comparator().
@@ -60,7 +60,7 @@ We generally want to remove from the leaf nodes of the heap
 
 ### Polling
 
-* Removing element with lowest priority or root node.
+* Removing element with highest priority or root node.
 * For Max-heap this will be largest element and in Min-heap this will be smallest element.
 We do this by swapping with the last element and then **bubbling down**
 Time: **O(log(n))**

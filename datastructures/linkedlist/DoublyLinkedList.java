@@ -1,4 +1,4 @@
-package own_implementation.linkedlist_queue_stack;
+package datastructures.linkedlist;
 public class DoublyLinkedList<T>  implements Iterable<T> {
     
     private int size = 0;

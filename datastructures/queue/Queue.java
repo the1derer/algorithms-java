@@ -1,4 +1,4 @@
-package own_implementation.linkedlist_queue_stack;
+package datastructures.queue;
 
 import java.util.Iterator;
 import java.util.LinkedList;

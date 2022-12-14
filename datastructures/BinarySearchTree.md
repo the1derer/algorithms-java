@@ -30,7 +30,7 @@
     * Elmemts must be 'comparable' so that we can can order them inside tree
     * when inserting compare it value to the value stored in the current node we're considering to decide on one of the following:
     4 case:
-        Recurse down left subree (< case)
+        Recurse down left subtree (< case)
         Recurse down right subtree (> case)
         Handle finding a duplicate value (= case)
         Create  new node (found a null leaf)

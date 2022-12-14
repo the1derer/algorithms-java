@@ -1,4 +1,4 @@
-package own_implementation.dynamicarray;
+package datastructures.dynamicarray;
 
 import java.util.Iterator;
 
